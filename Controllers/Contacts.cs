@@ -58,13 +58,14 @@ public static class Contacts
     /// Obtiene las conversaciones asociadas a un perfil
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<CreateResponse> Create(ContactModel modelo)
+    public async static Task<CreateResponse> Create(string token, ContactModel modelo)
     {
 
         // Crear HttpClient
         using var httpClient = new HttpClient();
 
 
+        httpClient.DefaultRequestHeaders.Add("token", token);
         // ApiServer de la solicitud GET
         string url = ApiServer.PathURL("contacts");
         var json = JsonConvert.SerializeObject(modelo);
