@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Contacts;
+using LIN.Types.Emma.Models;
 
 namespace LIN.Access.Contacts.Controllers;
 
@@ -12,7 +13,7 @@ public static class Profiles
     /// Obtiene las conversaciones asociadas a un perfil
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<ReadOneResponse<Message>> ToEmma(string modelo, string token)
+    public async static Task<ReadOneResponse<ResponseIAModel>> ToEmma(string modelo, string token)
     {
 
         // Crear HttpClient
@@ -35,7 +36,7 @@ public static class Profiles
             // Lee la respuesta del servidor
             var responseContent = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonConvert.DeserializeObject<ReadOneResponse<Message>>(responseContent);
+            var obj = JsonConvert.DeserializeObject<ReadOneResponse<ResponseIAModel>>(responseContent);
 
             return obj ?? new();
 
