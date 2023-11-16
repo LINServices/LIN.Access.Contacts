@@ -1,5 +1,4 @@
-﻿using LIN.Access.Contacts;
-using LIN.Types.Emma.Models;
+﻿using LIN.Types.Emma.Models;
 
 namespace LIN.Access.Contacts.Controllers;
 
@@ -23,7 +22,7 @@ public static class Profiles
 
         // ApiServer de la solicitud GET
         string url = ApiServer.PathURL("emma");
-        var json = JsonConvert.SerializeObject(modelo);
+        var json = JsonSerializer.Serialize(modelo);
 
         try
         {
@@ -36,7 +35,7 @@ public static class Profiles
             // Lee la respuesta del servidor
             var responseContent = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonConvert.DeserializeObject<ReadOneResponse<ResponseIAModel>>(responseContent);
+            var obj = JsonSerializer.Deserialize<ReadOneResponse<ResponseIAModel>>(responseContent);
 
             return obj ?? new();
 
@@ -88,7 +87,7 @@ public static class Profiles
             // Leer la respuesta como una cadena
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonConvert.DeserializeObject<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
+            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
 
             return obj ?? new();
 
@@ -137,7 +136,7 @@ public static class Profiles
             // Leer la respuesta como una cadena
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonConvert.DeserializeObject<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
+            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
 
             return obj ?? new();
 

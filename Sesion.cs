@@ -1,11 +1,5 @@
 ﻿global using LIN.Modules;
 global using LIN.Types.Contacts.Models;
-global using LIN.Types.Responses;
-global using Newtonsoft.Json;
-global using System;
-global using System.Net.Http;
-global using System.Text;
-global using System.Threading.Tasks;
 using LIN.Access.Contacts.Controllers;
 
 namespace LIN.Access.Contacts;
