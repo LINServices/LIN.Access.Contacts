@@ -1,6 +1,4 @@
-﻿global using LIN.Modules;
-global using LIN.Types.Contacts.Models;
-using LIN.Access.Contacts.Controllers;
+﻿using LIN.Access.Contacts.Controllers;
 
 namespace LIN.Access.Contacts;
 

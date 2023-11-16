@@ -9,3 +9,4 @@ global using System.Text;
 global using System.Threading.Tasks;
 global using LIN.Types.Enumerations;
 global using System.Text.Json;
+global using LIN.Types.Contacts.Models;

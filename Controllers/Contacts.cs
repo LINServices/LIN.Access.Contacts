@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace LIN.Access.Contacts.Controllers;
+﻿namespace LIN.Access.Contacts.Controllers;
 
 
 public static class Contacts
