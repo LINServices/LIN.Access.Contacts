@@ -1,8 +1,8 @@
 ﻿global using LIN.Types;
 global using LIN.Types.Responses;
-global using LIN.Types.Auth.Models;
+global using LIN.Types.Identity.Models;
 global using LIN.Modules;
-global using LIN.Types.Auth.Enumerations;
+global using LIN.Types.Identity.Enumerations;
 global using System;
 global using System.Net.Http;
 global using System.Text;
