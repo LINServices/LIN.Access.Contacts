@@ -15,7 +15,7 @@ public static class ApiServer
             if (IsSeted)
                 return SetedUrl;
 
-            return "http://contactslin.somee.com/";
+            return "http://lincontactsserver.somee.com/";
         }
     }
 
