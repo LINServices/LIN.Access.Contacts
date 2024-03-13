@@ -17,7 +17,7 @@ public static class Profiles
 
         // Crear HttpClient
         using var httpClient = new HttpClient();
-        httpClient.DefaultRequestHeaders.Add("token", token);
+        httpClient.DefaultRequestHeaders.Add("tokenAuth", token);
 
 
         // ApiServer de la solicitud GET
