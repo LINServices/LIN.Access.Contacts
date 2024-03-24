@@ -7,36 +7,41 @@ public sealed class Session
 {
 
 
+    /// <summary>
+    /// Token del servicio.
+    /// </summary>
     public string Token { get; set; } = string.Empty;
 
 
     /// <summary>
     /// Información del usuario
     /// </summary>
-    public ProfileModel Informacion { get; private set; } = new();
+    public ProfileModel Information { get; private set; } = new();
 
 
     /// <summary>
-    /// Información del usuario
+    /// Información del usuario.
     /// </summary>
     public AccountModel Account { get; private set; } = new();
 
 
+    /// <summary>
+    /// Token de la cuenta.
+    /// </summary>
     public string AccountToken { get; set; } = string.Empty;
 
 
-
     /// <summary>
-    /// Si la sesión es activa
+    /// Si la sesión es activa.
     /// </summary>
     public static bool IsAccountOpen { get => Instance.Account.Id > 0; }
 
 
 
     /// <summary>
-    /// Si la sesión es activa
+    /// Si la sesión es activa.
     /// </summary>
-    public static bool IsOpen { get => Instance.Informacion.Id > 0; }
+    public static bool IsOpen { get => Instance.Information.Id > 0; }
 
 
 
@@ -59,7 +64,7 @@ public sealed class Session
 
 
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Information = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
@@ -68,6 +73,7 @@ public sealed class Session
         return (Instance, Responses.Success);
 
     }
+
 
 
     /// <summary>
@@ -88,7 +94,7 @@ public sealed class Session
 
 
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Information = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
@@ -106,11 +112,9 @@ public sealed class Session
     /// </summary>
     public static void CloseSession()
     {
-        Instance.Informacion = new();
+        Instance.Information = new();
         Instance.Account = new();
     }
-
-
 
 
 
@@ -122,7 +126,7 @@ public sealed class Session
 
     private Session()
     {
-        Informacion = new();
+        Information = new();
     }
 
 

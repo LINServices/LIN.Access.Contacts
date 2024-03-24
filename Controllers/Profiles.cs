@@ -1,4 +1,4 @@
-﻿using LIN.Types.Emma.Models;
+﻿using LIN.Access.Services;
 
 namespace LIN.Access.Contacts.Controllers;
 
@@ -7,151 +7,41 @@ public static class Profiles
 {
 
 
-
     /// <summary>
-    /// Obtiene las conversaciones asociadas a un perfil
+    /// Iniciar sesión.
     /// </summary>
-    /// <param name="token">Token de acceso</param>
-    public async static Task<ReadOneResponse<ResponseIAModel>> ToEmma(string modelo, string token)
-    {
-
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
-        httpClient.DefaultRequestHeaders.Add("tokenAuth", token);
-
-
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("emma");
-        var json = JsonSerializer.Serialize(modelo);
-
-        try
-        {
-            // Contenido
-            StringContent content = new(json, Encoding.UTF8, "application/json");
-
-            // Envía la solicitud
-            var response = await httpClient.PostAsync(url, content);
-
-            // Lee la respuesta del servidor
-            var responseContent = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<ResponseIAModel>>(responseContent);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
-
-    }
-
-
-
-    /// <summary>
-    /// Iniciar sesión
-    /// </summary>
-    /// <param name="cuenta">Cuenta</param>
-    /// <param name="password">Contraseña</param>
-    /// <param name="app">App de contexto</param>
+    /// <param name="cuenta">Cuenta.</param>
+    /// <param name="password">Contraseña.</param>
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente
+        Client client = Service.GetClient($"profile/login");
 
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("profile/login");
+        // Headers.
+        client.AddParameter("user", cuenta);
+        client.AddParameter("password", password);
 
-
-        url = Web.AddParameters(url, new(){
-            {"user", cuenta },
-             {"password", password }
-        });
-
-
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        return await client.Get<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>();
 
     }
 
 
 
     /// <summary>
-    /// Login
+    /// Login con token.
     /// </summary>
     /// <param name="token">Token de acceso</param>
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente
+        Client client = Service.GetClient($"profile/login/token");
 
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("profile/login/token");
+        // Headers.
+        client.AddParameter("token", token);
 
-
-        url = Web.AddParameters(url, new(){
-            {"token", token }
-        });
-
-
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        return await client.Get<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>();
 
     }
 

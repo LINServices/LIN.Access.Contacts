@@ -4,6 +4,9 @@
 public class Build
 {
 
+    /// <summary>
+    /// Iniciar el servicio.
+    /// </summary>
     public static void Init()
     {
         Service._Service = new();
