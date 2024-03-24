@@ -1,4 +1,6 @@
-﻿namespace LIN.Access.Contacts.Controllers;
+﻿using LIN.Access.Services;
+
+namespace LIN.Access.Contacts.Controllers;
 
 
 public static class Contacts
@@ -12,42 +14,13 @@ public static class Contacts
     public async static Task<CreateResponse> Create(string token, ContactModel modelo)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente
+        Client client = Service.GetClient($"contacts");
 
+        // Headers.
+        client.AddHeader("token", token);
 
-        httpClient.DefaultRequestHeaders.Add("token", token);
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("contacts");
-        var json = JsonSerializer.Serialize(modelo);
-
-        try
-        {
-            // Contenido
-            StringContent content = new(json, Encoding.UTF8, "application/json");
-
-            // Envía la solicitud
-            var response = await httpClient.PostAsync(url, content);
-
-            // Lee la respuesta del servidor
-            var responseContent = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<CreateResponse>(responseContent);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        return await client.Post<CreateResponse>(modelo);
 
     }
 
@@ -60,41 +33,80 @@ public static class Contacts
     public async static Task<ReadAllResponse<ContactModel>> ReadAll(string token)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
-
-        httpClient.DefaultRequestHeaders.Add("token", token);
-
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("contacts/all");
-
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadAllResponse<ContactModel>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
 
 
-        return new();
+        // Cliente
+        Client client = Service.GetClient($"contacts/all");
 
+        // Headers.
+        client.AddHeader("token", token);
 
-
-
+        return await client.Get<ReadAllResponse<ContactModel>>();
 
     }
+
+
+
+    /// <summary>
+    /// Obtener un contacto.
+    /// </summary>
+    /// <param name="id">Id del contacto.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ReadOneResponse<ContactModel>> Read(int id, string token)
+    {
+
+        // Cliente
+        Client client = Service.GetClient($"contacts");
+
+        // Headers.
+        client.AddHeader("token", token);
+        client.AddParameter("id", id);
+
+        return await client.Get<ReadOneResponse<ContactModel>>();
+
+    }
+
+
+
+    /// <summary>
+    /// Eliminar un contacto.
+    /// </summary>
+    /// <param name="id">Id del contacto.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Delete(int id, string token)
+    {
+
+        // Cliente
+        Client client = Service.GetClient($"contacts");
+
+        // Headers.
+        client.AddHeader("token", token);
+        client.AddParameter("id", id);
+
+        return await client.Delete<ResponseBase>();
+
+    }
+
+
+
+    /// <summary>
+    /// Actualizar un contacto.
+    /// </summary>
+    /// <param name="contact">Modelo.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Update(ContactModel contact, string token)
+    {
+
+        // Cliente
+        Client client = Service.GetClient($"contacts");
+
+        // Headers.
+        client.AddHeader("token", token);
+
+        return await client.Patch<ResponseBase>(contact);
+
+    }
+
 
 
 }

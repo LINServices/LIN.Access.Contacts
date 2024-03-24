@@ -7,7 +7,7 @@ public sealed class Session
 {
 
 
-    public string Token { get; set; }
+    public string Token { get; set; } = string.Empty;
 
 
     /// <summary>
@@ -22,7 +22,7 @@ public sealed class Session
     public AccountModel Account { get; private set; } = new();
 
 
-    public string AccountToken { get; set; }
+    public string AccountToken { get; set; } = string.Empty;
 
 
 
