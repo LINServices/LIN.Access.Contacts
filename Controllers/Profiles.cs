@@ -18,6 +18,9 @@ public static class Profiles
         // Cliente
         Client client = Service.GetClient($"profile/login");
 
+        // Segundos.
+        client.TimeOut = 15;
+
         // Headers.
         client.AddParameter("user", cuenta);
         client.AddParameter("password", password);
@@ -37,6 +40,9 @@ public static class Profiles
 
         // Cliente
         Client client = Service.GetClient($"profile/login/token");
+
+        // Segundos.
+        client.TimeOut = 15;
 
         // Headers.
         client.AddParameter("token", token);
