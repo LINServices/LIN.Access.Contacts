@@ -1,6 +1,4 @@
-﻿using LIN.Access.Services;
-
-namespace LIN.Access.Contacts.Controllers;
+﻿namespace LIN.Access.Contacts.Controllers;
 
 
 public static class Contacts

@@ -1,5 +1,4 @@
-﻿using LIN.Access.Services;
-using LIN.Types.Emma.Models;
+﻿using LIN.Types.Emma.Models;
 
 namespace LIN.Access.Contacts.Controllers;
 
