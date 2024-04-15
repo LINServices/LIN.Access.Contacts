@@ -1,4 +1,6 @@
-﻿namespace LIN.Access.Contacts.Controllers;
+﻿using LIN.Types.Contacts.Transient;
+
+namespace LIN.Access.Contacts.Controllers;
 
 
 public static class Profiles
@@ -49,6 +51,29 @@ public static class Profiles
 
     }
 
+
+
+
+    /// <summary>
+    /// Obtiene los datos de una cuenta especifica
+    /// </summary>
+    /// <param name="id">Id de la cuenta</param>
+    public async static Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("device");
+
+        // Headers.
+        client.AddHeader("token", token);
+
+        // Resultado.
+        var Content = await client.Get<ReadAllResponse<DeviceModel>>();
+
+        // Retornar.
+        return Content;
+
+    }
 
 
 }
