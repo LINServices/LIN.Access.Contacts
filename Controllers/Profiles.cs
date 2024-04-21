@@ -55,9 +55,9 @@ public static class Profiles
 
 
     /// <summary>
-    /// Obtiene los datos de una cuenta especifica
+    /// Obtener los dispositivos.
     /// </summary>
-    /// <param name="id">Id de la cuenta</param>
+    /// <param name="token">Token de acceso.</param>
     public async static Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
     {
 
