@@ -11,7 +11,7 @@ public class Emma
     /// Obtiene las conversaciones asociadas a un perfil
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<ReadOneResponse<ResponseIAModel>> ToEmma(string modelo, string token)
+    public static async Task<ReadOneResponse<ResponseIAModel>> ToEmma(string modelo, string token)
     {
 
         // Cliente

@@ -12,7 +12,7 @@ public static class Profiles
     /// </summary>
     /// <param name="cuenta">Cuenta.</param>
     /// <param name="password">Contraseña.</param>
-    public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
+    public static async Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
     {
 
         // Cliente
@@ -35,7 +35,7 @@ public static class Profiles
     /// Login con token.
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
+    public static async Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
     {
 
         // Cliente
@@ -58,7 +58,7 @@ public static class Profiles
     /// Obtener los dispositivos.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
+    public static async Task<ReadAllResponse<DeviceModel>> ReadDevices(string token)
     {
 
         // Cliente HTTP.

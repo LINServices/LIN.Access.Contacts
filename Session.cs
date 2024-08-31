@@ -122,7 +122,7 @@ public sealed class Session
     //==================== Singleton ====================//
 
 
-    private readonly static Session _instance = new();
+    private static readonly Session _instance = new();
 
     private Session()
     {

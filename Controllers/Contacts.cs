@@ -9,7 +9,7 @@ public static class Contacts
     /// Crear un contacto.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<CreateResponse> Create(string token, ContactModel modelo)
+    public static async Task<CreateResponse> Create(string token, ContactModel modelo)
     {
 
         // Cliente
@@ -28,7 +28,7 @@ public static class Contacts
     /// Obtiene los contactos asociados a un perfil.
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<ReadAllResponse<ContactModel>> ReadAll(string token)
+    public static async Task<ReadAllResponse<ContactModel>> ReadAll(string token)
     {
 
 
@@ -50,7 +50,7 @@ public static class Contacts
     /// </summary>
     /// <param name="id">Id del contacto.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ReadOneResponse<ContactModel>> Read(int id, string token)
+    public static async Task<ReadOneResponse<ContactModel>> Read(int id, string token)
     {
 
         // Cliente
@@ -71,7 +71,7 @@ public static class Contacts
     /// </summary>
     /// <param name="id">Id del contacto.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ResponseBase> Delete(int id, string token)
+    public static async Task<ResponseBase> Delete(int id, string token)
     {
 
         // Cliente
@@ -92,7 +92,7 @@ public static class Contacts
     /// </summary>
     /// <param name="contact">Modelo.</param>
     /// <param name="token">Token de acceso.</param>
-    public async static Task<ResponseBase> Update(ContactModel contact, string token)
+    public static async Task<ResponseBase> Update(ContactModel contact, string token)
     {
 
         // Cliente
