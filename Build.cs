@@ -1,17 +1,21 @@
-﻿namespace LIN.Access.Contacts;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace LIN.Access.Contacts;
 
 
-public class Build
+public static class Build
 {
 
     /// <summary>
-    /// Iniciar el servicio.
+    /// Utilizar LIN Authentication.
     /// </summary>
-    public static void Init()
+    /// <param name="app">Aplicación.</param>
+    /// <param name="url">Ruta.</param>
+    public static IServiceCollection AddContactsService(this IServiceCollection service, string? url = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault("https://api.contacts.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://api.contacts.linplatform.com/");
+        return service;
     }
-
 
 }
