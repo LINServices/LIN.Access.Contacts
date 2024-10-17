@@ -45,7 +45,7 @@ public static class Profiles
         client.TimeOut = 15;
 
         // Headers.
-        client.AddParameter("token", token);
+        client.AddHeader("token", token);
 
         return await client.Get<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>();
 
