@@ -1,14 +1,13 @@
 ﻿namespace LIN.Access.Contacts.Controllers;
 
-
 public static class Contacts
 {
 
-
     /// <summary>
-    /// Crear un contacto.
+    /// Crear un nuevo contacto.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
+    /// <param name="modelo">Modelo.</param>
     public static async Task<CreateResponse> Create(string token, ContactModel modelo)
     {
 
@@ -21,7 +20,6 @@ public static class Contacts
         return await client.Post<CreateResponse>(modelo);
 
     }
-
 
 
     /// <summary>
@@ -44,7 +42,6 @@ public static class Contacts
     }
 
 
-
     /// <summary>
     /// Obtener un contacto.
     /// </summary>
@@ -63,7 +60,6 @@ public static class Contacts
         return await client.Get<ReadOneResponse<ContactModel>>();
 
     }
-
 
 
     /// <summary>
@@ -86,7 +82,6 @@ public static class Contacts
     }
 
 
-
     /// <summary>
     /// Actualizar un contacto.
     /// </summary>
@@ -104,7 +99,5 @@ public static class Contacts
         return await client.Patch<ResponseBase>(contact);
 
     }
-
-
 
 }

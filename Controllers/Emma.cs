@@ -1,7 +1,4 @@
-﻿using LIN.Types.Cloud.OpenAssistant.Api;
-
-namespace LIN.Access.Contacts.Controllers;
-
+﻿namespace LIN.Access.Contacts.Controllers;
 
 public class Emma
 {

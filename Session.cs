@@ -2,7 +2,6 @@
 
 namespace LIN.Access.Contacts;
 
-
 public sealed class Session
 {
 
@@ -44,8 +43,6 @@ public sealed class Session
     public static bool IsOpen { get => Instance.Information.Id > 0; }
 
 
-
-
     /// <summary>
     /// Recarga o inicia una sesión
     /// </summary>
@@ -73,7 +70,6 @@ public sealed class Session
         return (Instance, Responses.Success);
 
     }
-
 
 
     /// <summary>
@@ -105,8 +101,6 @@ public sealed class Session
     }
 
 
-
-
     /// <summary>
     /// Cierra la sesión
     /// </summary>
@@ -115,9 +109,6 @@ public sealed class Session
         Instance.Information = new();
         Instance.Account = new();
     }
-
-
-
 
     //==================== Singleton ====================//
 

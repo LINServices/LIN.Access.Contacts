@@ -2,7 +2,6 @@
 
 namespace LIN.Access.Contacts;
 
-
 public static class Build
 {
 

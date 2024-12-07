@@ -1,18 +1,14 @@
-﻿using LIN.Types.Contacts.Transient;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 
 namespace LIN.Access.Contacts.Hubs;
 
-
 public class ContactsAccessHub : IDisposable
 {
-
 
     /// <summary>
     /// Conexión del HUB
     /// </summary>
     private protected HubConnection? HubConnection { get; set; }
-
 
 
     /// <summary>
@@ -21,20 +17,16 @@ public class ContactsAccessHub : IDisposable
     public event EventHandler<CommandModel>? On;
 
 
-
     /// <summary>
     /// Token de acceso.
     /// </summary>
     public string Token { get; set; }
 
 
-
     /// <summary>
     /// Modelo del dispositivo.
     /// </summary>
     public DeviceModel Device { get; set; }
-
-
 
 
     /// <summary>
@@ -50,19 +42,20 @@ public class ContactsAccessHub : IDisposable
     }
 
 
-
-
+    /// <summary>
+    /// Obtener el estado actual.
+    /// </summary>
     public string GetStatus()
     {
         return HubConnection?.State.ToString() ?? "";
     }
+
 
     /// <summary>
     /// Enviar el evento.
     /// </summary>
     /// <param name="cm">Comando.</param>
     private protected void SendEvent(CommandModel cm) => On?.Invoke(null, cm);
-
 
 
     /// <summary>
@@ -93,8 +86,6 @@ public class ContactsAccessHub : IDisposable
     }
 
 
-
-
     /// <summary>
     /// Enviar un comando.
     /// </summary>
@@ -109,7 +100,6 @@ public class ContactsAccessHub : IDisposable
         {
         }
     }
-
 
 
     /// <summary>
@@ -129,7 +119,6 @@ public class ContactsAccessHub : IDisposable
     }
 
 
-
     /// <summary>
     /// Evento Dispose.
     /// </summary>
@@ -137,6 +126,5 @@ public class ContactsAccessHub : IDisposable
     {
         _ = HubConnection?.DisposeAsync();
     }
-
 
 }
