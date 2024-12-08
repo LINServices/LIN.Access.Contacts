@@ -55,7 +55,7 @@ public static class Profiles
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("device");
+        Client client = Service.GetClient("devices");
 
         // Headers.
         client.AddHeader("token", token);
