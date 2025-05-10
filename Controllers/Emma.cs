@@ -11,13 +11,12 @@ public class Emma
     {
 
         // Cliente
-        Client client = Service.GetClient($"Emma");
+        Client client = Service.GetClient($"emma");
 
         // Headers.
         client.AddHeader("tokenAuth", token);
 
         return await client.Post<ReadOneResponse<LIN.Types.Cloud.OpenAssistant.Models.EmmaSchemaResponse>>(modelo);
-
     }
 
 }

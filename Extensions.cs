@@ -2,7 +2,7 @@
 
 namespace LIN.Access.Contacts;
 
-public static class Build
+public static class Extensions
 {
 
     /// <summary>
@@ -13,7 +13,7 @@ public static class Build
     public static IServiceCollection AddContactsService(this IServiceCollection service, string? url = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "https://api.contacts.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://contacts.api.linplatform.com/");
         return service;
     }
 

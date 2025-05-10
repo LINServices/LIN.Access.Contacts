@@ -10,7 +10,6 @@ public static class Contacts
     /// <param name="modelo">Modelo.</param>
     public static async Task<CreateResponse> Create(string token, ContactModel modelo)
     {
-
         // Cliente
         Client client = Service.GetClient($"contacts");
 
@@ -18,7 +17,6 @@ public static class Contacts
         client.AddHeader("token", token);
 
         return await client.Post<CreateResponse>(modelo);
-
     }
 
 
@@ -28,9 +26,6 @@ public static class Contacts
     /// <param name="token">Token de acceso</param>
     public static async Task<ReadAllResponse<ContactModel>> ReadAll(string token)
     {
-
-
-
         // Cliente
         Client client = Service.GetClient($"contacts/all");
 
@@ -38,7 +33,6 @@ public static class Contacts
         client.AddHeader("token", token);
 
         return await client.Get<ReadAllResponse<ContactModel>>();
-
     }
 
 
@@ -49,7 +43,6 @@ public static class Contacts
     /// <param name="token">Token de acceso.</param>
     public static async Task<ReadOneResponse<ContactModel>> Read(int id, string token)
     {
-
         // Cliente
         Client client = Service.GetClient($"contacts");
 
@@ -58,7 +51,6 @@ public static class Contacts
         client.AddParameter("id", id);
 
         return await client.Get<ReadOneResponse<ContactModel>>();
-
     }
 
 
