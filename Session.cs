@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Contacts.Controllers;
+using LIN.Types.Cloud.Identity.Models.Identities;
 
 namespace LIN.Access.Contacts;
 

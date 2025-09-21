@@ -11,7 +11,7 @@ public static class Contacts
     public static async Task<CreateResponse> Create(string token, ContactModel modelo)
     {
         // Cliente
-        Client client = Service.GetClient($"contacts");
+        Client client = Service.GetClient($"api/contacts");
 
         // Headers.
         client.AddHeader("token", token);
@@ -27,7 +27,7 @@ public static class Contacts
     public static async Task<ReadAllResponse<ContactModel>> ReadAll(string token)
     {
         // Cliente
-        Client client = Service.GetClient($"contacts/all");
+        Client client = Service.GetClient($"api/contacts/all");
 
         // Headers.
         client.AddHeader("token", token);
@@ -44,7 +44,7 @@ public static class Contacts
     public static async Task<ReadOneResponse<ContactModel>> Read(int id, string token)
     {
         // Cliente
-        Client client = Service.GetClient($"contacts");
+        Client client = Service.GetClient($"api/contacts");
 
         // Headers.
         client.AddHeader("token", token);
@@ -63,7 +63,7 @@ public static class Contacts
     {
 
         // Cliente
-        Client client = Service.GetClient($"contacts");
+        Client client = Service.GetClient($"api/contacts");
 
         // Headers.
         client.AddHeader("token", token);
@@ -83,7 +83,7 @@ public static class Contacts
     {
 
         // Cliente
-        Client client = Service.GetClient($"contacts");
+        Client client = Service.GetClient($"api/contacts");
 
         // Headers.
         client.AddHeader("token", token);

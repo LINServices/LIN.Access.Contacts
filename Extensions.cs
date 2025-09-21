@@ -13,7 +13,7 @@ public static class Extensions
     public static IServiceCollection AddContactsService(this IServiceCollection service, string? url = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "https://contacts.api.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://api.linplatform.com/contacts/");
         return service;
     }
 
